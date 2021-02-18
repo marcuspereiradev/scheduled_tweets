@@ -1,5 +1,6 @@
 # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
+  get 'twitter_accounts/index'
   get 'about', to: 'about#index'
 
   get 'password', to: 'passwords#edit', as: :edit_password
@@ -19,6 +20,8 @@ Rails.application.routes.draw do
   patch 'password_reset/edit', to: 'password_resets#update'
 
   get '/auth/twitter/callback', to: 'omniauth_callbacks#twitter'
+
+  resources :twitter_accounts
 
   root to: 'main#index'
 end
